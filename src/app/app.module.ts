@@ -15,9 +15,14 @@ import {RouterModule,ROUTES} from '@angular/router';
 import {HttpClientModule} from '@angular/common/http';
 
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { HttpClient } from '@angular/common/http';
+/**** */
 
+
+/**** */
 
 import { from } from 'rxjs';
+
 
 
 @NgModule({
@@ -26,6 +31,7 @@ import { from } from 'rxjs';
     LogInComponent,
     RegistrationComponent,
     AdminComponent,
+    
     
    
   ],

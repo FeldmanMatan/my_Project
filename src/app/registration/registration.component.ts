@@ -59,13 +59,15 @@ export class RegistrationComponent implements OnInit {
 
     // event.prevetDefult();
     const target= event.target
-    const email= target.querySelector('#email').value
-    const password= target.querySelector('#password').value
+    // const email= target.querySelector('#email').value
+    // const password= target.querySelector('#password').value
+    this.student.email=target.querySelector('#email').value;
+    this.student.password=target.querySelector('#password').value;
 
     //this.Auth.getUserDetails(email, password);
 
-    console.log('email=', email);
-    console.log('password=', password);
+    console.log('email=', this.student.email);
+    console.log('password=', this.student.password);
     }
 
 }

@@ -17,6 +17,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { FormGroup } from '@angular/forms';
 import { from } from 'rxjs';
+import { ServerService } from '../server.service';
 // import { TempServiceService } from '../../services/temp-service.service';
 // import { AuthService } from '../../services/auth.service';
 
@@ -27,7 +28,18 @@ import { from } from 'rxjs';
 })
 export class LogInComponent implements OnInit {
 
-  // constructor(public Temp: TempServiceService, public Auth: AuthService) { }
+  constructor(private server:ServerService) { 
+
+  }
+  //public Temp: TempServiceService, public Auth: AuthService
+  student= {
+    firstName: '',
+    lastName: '',
+    password:'',
+    confirmPassword:'',
+    email: '',
+    phone:'',
+  }
 
   ngOnInit(): void {
   }
@@ -38,14 +50,34 @@ export class LogInComponent implements OnInit {
 
     event.preventDefault();  /**** */
     const target= event.target
-    const email= target.querySelector('#email').value
-    const password= target.querySelector('#password').value
+    // const email= target.querySelector('#email').value
+    // const password= target.querySelector('#password').value
 
-    //this.Auth.getUserDetails(email, password);
-    console.log(email, password);
+    // //this.Auth.getUserDetails(email, password);
+    // console.log(email, password);
 
-    console.log('email=', email);
-    console.log('password=', password);
+    // console.log('email=', email);
+    // console.log('password=', password);
+    
+
+      // event.prevetDefult();
+    
+      // const email= target.querySelector('#email').value
+      // const password= target.querySelector('#password').value
+      this.student.email=target.querySelector('#email').value;
+      this.student.password=target.querySelector('#password').value;
+
+      this.server.logInStudent(this.student).subscribe(student=>{
+        this.student.email;
+        this.student.password;
+
+      })
+      this.student.password=target.querySelector('#password').value;
+  
+      //this.Auth.getUserDetails(email, password);
+  
+      console.log('email=', this.student.email);
+      console.log('password=', this.student.password);
     }
 
 }
