@@ -1,9 +1,6 @@
 
 import { Component, OnInit } from '@angular/core';
 
-// להחזיר import { TempServiceService } from '../../services/temp-service.service';
-
-
 
 @Component({
   selector: 'app-registration',
@@ -35,20 +32,6 @@ export class RegistrationComponent implements OnInit {
   constructor( ) { 
   
   }
-
- 
-  
-
-  // onSend(a:any){
-  
-  //   console.log(a.value);
-  //   console.log(a.valid);
-  //   console.log(this.student);
- 
-  // }
-
- 
-
 
 
   ngOnInit(): void {

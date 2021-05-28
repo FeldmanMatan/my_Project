@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
+
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry,  map, tap } from 'rxjs/operators';
 import { LogInComponent } from './log-in/log-in.component';
+import { TableTimeComponent } from './table-time/table-time.component';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +19,15 @@ export class ServerService {
    logInStudent(student: any){
      return this.http.post('http://127.0.0.1:5000/login',student);
    }
+
+   getEvents(from: any , to: any){
+    return this.http.post('http://127.0.0.1:5000/login',from,to);
+
+   }
+
+   
+
+  
 
    
 

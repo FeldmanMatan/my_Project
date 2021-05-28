@@ -19,9 +19,19 @@ import { HttpClient } from '@angular/common/http';
 /**** */
 
 
+
+//import {AppComponent} from './app.component';
+//import {CalendarModule} from '../app/table-time/calendar.module';
+import {DataService} from "./table-time/data.service";
+
+import {DayPilotModule} from "daypilot-pro-angular";
+
 /**** */
 
 import { from } from 'rxjs';
+import { StudentScreenComponent } from './student-screen/student-screen.component';
+import { ToturScreenComponent } from './totur-screen/totur-screen.component';
+import { TableTimeComponent } from './table-time/table-time.component';
 
 
 
@@ -31,10 +41,18 @@ import { from } from 'rxjs';
     LogInComponent,
     RegistrationComponent,
     AdminComponent,
-    
-    
-   
+    StudentScreenComponent,
+    ToturScreenComponent,
+    TableTimeComponent,
+ 
   ],
+
+  /**** */
+  providers:    [ DataService ],
+  bootstrap: [AppComponent],
+  // exports:      [  ], ///If 'app-table-tim' is an Angular component, then verify that it is part of this module
+  
+  /***** */
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -42,6 +60,8 @@ import { from } from 'rxjs';
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    //CalendarModule,
+    DayPilotModule,
     // NgForm,
     RouterModule.forRoot([
       {
@@ -63,25 +83,24 @@ import { from } from 'rxjs';
         // canActivate:[TempServiceService]
 
       },
-      // {
-      //   path: 'student',
-      //   component:ScreenStudentComponent
-      // },
-      // {
-      //   path: 'totur',
-      //   component:ScreenToturComponent
-      // },
+      {
+        path: 'student',
+        component:  StudentScreenComponent,
+      },
+      {
+        path: 'totur',
+        component:ToturScreenComponent,
+      },
       // {
       //   path: 'professional_details',
       //   component:ProfessionalDetailsComponent
       // },
-      // {
-      //   path: 'app-tabletime',
-      //   component:TabletimeComponent
-      // },
+      {
+        path: 'tableTime',
+        component:TableTimeComponent
+      },
     ]),/***/
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+ 
 })
 export class AppModule { }
