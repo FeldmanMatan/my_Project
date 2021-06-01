@@ -19,6 +19,8 @@ import { HttpClient } from '@angular/common/http';
 /**** */
 
 
+import {userService} from './user.service'
+
 
 //import {AppComponent} from './app.component';
 //import {CalendarModule} from '../app/table-time/calendar.module';
@@ -48,7 +50,7 @@ import { TableTimeComponent } from './table-time/table-time.component';
   ],
 
   /**** */
-  providers:    [ DataService ],
+  providers:    [ DataService,userService ],
   bootstrap: [AppComponent],
   // exports:      [  ], ///If 'app-table-tim' is an Angular component, then verify that it is part of this module
   
@@ -60,7 +62,6 @@ import { TableTimeComponent } from './table-time/table-time.component';
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    //CalendarModule,
     DayPilotModule,
     // NgForm,
     RouterModule.forRoot([

@@ -1,1 +1,52 @@
 TOP SECRET!!!
+
+<form (ngSubmit) = "studentDetails($event)"> 
+    <!--loginUser-->
+    <!-- #a="ngForm"  (ngSubmit)= "onSend(a)" -->
+    <div class="form-group">
+        <input type="name" class="form-control" placeholder="name of student *" id="name" />
+    </div>
+    <div class="form-group">
+        <input type="submit" class="btnSubmit" value="Login" />
+    </div>
+</form>
+<!-- <h1 class="heading"><strong>HTTP </strong>Demo</h1> -->
+ 
+ <!-- <div class="form-group">
+  <label for="userName">User Name</label>
+  <input type="text" class="form-control"  placeholder="name of student *" id="#name" "> 
+</div>  -->
+<!--- <div class="form-group">
+                        <input type="email" class="form-control" placeholder="Your Email *" id="email" ///[(ngModel)]="userName />
+                    </div>-->
+<div class="form-group">
+  <button type="button" (click)="getStudent()">Get students name</button>
+</div> 
+ 
+<div *ngIf="loading">loading...</div>
+ 
+<div *ngIf="errorMessage" class="alert alert-warning">
+  <strong>Warning!</strong> {{errorMessage | json}}
+</div>
+ 
+ 
+<table class='table'>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <!-- <th>HTML Url</th>
+      <th>description</th> -->
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let student of students">
+      <!-- <td>{{student.id}}</td> -->
+      <td>{{user.student.name}}</td>
+      
+    </tr>
+  </tbody>
+</table>
+ 
+<pre>{{repos | json}}</pre>
+ 

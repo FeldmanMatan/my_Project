@@ -38,7 +38,7 @@ export class RegistrationComponent implements OnInit {
   }
 
 
-  loginUser(event : any){
+  registration(event : any){
 
     // event.prevetDefult();
     const target= event.target

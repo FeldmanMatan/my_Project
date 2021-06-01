@@ -32,10 +32,9 @@ export class DataService {
     });
 
    
-    this.server.getEvents(from,to).subscribe(any=>{
-      from;
-      to;
-    });
+     //this.server.getEvents(from,to).subscribe(any=>{
+       //from;
+       //to; });
     
 
   
