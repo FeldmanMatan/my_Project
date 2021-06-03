@@ -42,6 +42,12 @@ export class ServerService {
      return a;
    }
 
+   activate_GA(name:any,course:any){
+    let  a= this.http.post('https://first-flask-server.herokuapp.com/activate_GA',name,course);
+    console.log('from server=>   '+a);
+     return a;
+   }
+
   //  logInStudent(student: any):Observable<any>{
   //    var a;
   //    var b;

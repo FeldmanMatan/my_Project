@@ -1,13 +1,15 @@
-TOP SECRET!!!
+<h1>Good morning admin</h1>
+<br><br>
 
 <form (ngSubmit) = "studentDetails($event)"> 
     <!--loginUser-->
     <!-- #a="ngForm"  (ngSubmit)= "onSend(a)" -->
+    <h3>Get student details</h3>
     <div class="form-group">
         <input type="name" class="form-control" placeholder="name of student *" id="name" />
     </div>
     <div class="form-group">
-        <input type="submit" class="btnSubmit" value="Login" />
+        <input type="submit" class="btnSubmit" value="submit" />
     </div>
 </form>
 <!-- <h1 class="heading"><strong>HTTP </strong>Demo</h1> -->
@@ -19,34 +21,60 @@ TOP SECRET!!!
 <!--- <div class="form-group">
                         <input type="email" class="form-control" placeholder="Your Email *" id="email" ///[(ngModel)]="userName />
                     </div>-->
+<h3>get all of students names</h3>
 <div class="form-group">
   <button type="button" (click)="getStudent()">Get students name</button>
 </div> 
  
-<div *ngIf="loading">loading...</div>
+<!-- <div *ngIf="loading">loading...</div> -->
  
-<div *ngIf="errorMessage" class="alert alert-warning">
+<!-- <div *ngIf="errorMessage" class="alert alert-warning">
   <strong>Warning!</strong> {{errorMessage | json}}
-</div>
+</div> -->
  
  
-<table class='table'>
+<!-- <table class='table'>
   <thead>
     <tr>
       <th>ID</th>
       <th>Name</th>
-      <!-- <th>HTML Url</th>
+      <th>HTML Url</th>
       <th>description</th> -->
-    </tr>
+    <!-- </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let student of students">
+    <tr *ngFor="let student of students"> -->
       <!-- <td>{{student.id}}</td> -->
-      <td>{{user.student.name}}</td>
+      <!-- <td>{{user.student.name}}</td>
       
     </tr>
   </tbody>
-</table>
+</table> -->
  
 <pre>{{repos | json}}</pre>
  
+
+<div class="container login-container">
+  <div class="row">
+      <div class="col-md-6 login-form-1">
+          <h3>Genetic algorithm</h3>
+          <!-- <form  action="../studentScreen/studentScreen.html"> -->
+          <form (ngSubmit) = "GaDetails($event)"> 
+              <!--loginUser-->
+              <!-- #a="ngForm"  (ngSubmit)= "onSend(a)" -->
+              <div class="form-group">
+                  <input type="name" class="form-control" placeholder="studentName *" id="name" />
+              </div>
+              <div class="form-group">
+                  <input type="course" class="form-control" placeholder="student course *" id="course" />
+              </div>
+              <div class="form-group">
+                  <input type="submit" class="btnSubmit" value="lets go" />
+              </div>
+              <!-- <div class="form-group">
+                  <a href="#" class="ForgetPwd">Forget Password?</a>
+              </div> -->
+          </form>
+      </div>
+  </div>
+</div>

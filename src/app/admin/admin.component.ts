@@ -50,6 +50,31 @@ studentDetails(event:any){
   );
 
 }
+GaDetails(event:any){
+  const target= event.target;
+  this.user.Student.name=target.querySelector('#name').value;
+  this.user.Student.courseProvided=target.querySelector('#course').value;
+  
+  console.log('name =', this.user.Student.name);
+  console.log('course =', this.user.Student.courseProvided);
+
+  this.server.activate_GA(this.user.Student.name,this.user.Student.courseProvided).subscribe(
+    (response)=> console.log(response),
+    (error)=> console.log(error)
+  );
+}
+  
+  // (event:any){
+  // const target= event.target;
+  // this.user.Student.email=target.querySelector('#name').value;
+  
+  // console.log('name =', this.user.Student.name);
+
+  // this.server.OutPutStudentDeatails(this.user.Student.name).subscribe(
+  //   (response)=> console.log(response),
+  //   (error)=> console.log(error)
+  // );
+
 }
 //   getAllStudents(){
 //     this.user.getStudent().subscribe(
