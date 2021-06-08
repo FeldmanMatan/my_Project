@@ -1,0 +1,104 @@
+<!-- <p>genetic-algorithem works!</p>
+
+<form [formGroup]="form" (ngSubmit)="submitForm()" novalidate>
+
+    <div *ngFor="let data of Data; let i=index">
+      <label>
+        <input type="checkbox" [value]="data.value" (change)="onCheckboxChange($event)" />
+        {{data.name}}
+      </label>
+    </div>
+  
+    <p class="error" *ngIf="this.form.controls['checkArray'].errors?.required">
+      Checkbox is required, select atleast one value.
+    </p>
+  
+    <input type="submit" value="Submit">
+  </form>
+
+  <form *ngif(data.name)='checked' [formGroup]="form" (ngSubmit)="submitForm()" novalidate>
+
+    <div *ngFor="let hours of Hours; let i=index">
+      <label>
+        <input type="checkbox" [value]="hours.value" (change)="onCheckboxChange($event)"  />
+        {{hours.name}}
+      </label>
+    </div>
+  
+    <p class="error" *ngIf="this.form.controls['checkArray'].errors?.required">
+      Checkbox is required, select atleast one value.
+    </p>
+
+    <div *ngif></div>
+  
+    <input type="submit" value="Submit">
+  </form> -->
+  <div class="container">
+    <div class="text-right mt-5">
+      <div class="row">
+        <form action="" (ngSubmit) = "stringify($event)"> 
+            <div class="col-md-4">
+              <!-- submit -->
+              <!-- Master Checkbox -->
+              <!-- <ul class="list-group">
+                <li class="list-group-item"> -->
+      
+                  <button (click)="selectUnselectAll(data)">
+                    <button *ngIf="data.isAllSelected;else noneSelected">Unselect All </button>
+                    <ng-template #noneSelected>Select All </ng-template>
+                  </button>
+      
+                  <!--Master Expand/ Collapse Arrow  -->
+                  <!-- <button (click)="expandCollapseAll(data)">
+                    <i class="fas fa-angle-up" *ngIf="data.isAllCollapsed;else isCollapsed"></i>
+                    <ng-template #isCollapsed><i class="fas fa-angle-down"></i></ng-template>
+                  </button> -->
+      
+                <!-- </li>
+              </ul> -->
+      
+              <ul class="list-group">
+      
+                <!-- Parent Item -->
+                <li class="list-group-item" *ngFor="let item of data.ParentChildchecklist">
+      
+                  <!-- Parent Checkbox -->
+                  <input type="checkbox" [(ngModel)]="item.isSelected" name="list_name" value="{{item.id}}"
+                    (ngModelChange)="parentCheck(item)" />
+                  {{item.value}}
+                  <!-- Parent Arrow -->
+                  <span (click)="expandCollapse(item)">
+                    <i class="fas fa-angle-up" *ngIf="item.isClosed;else isCollapsed"></i>
+                    <ng-template #isCollapsed>
+                      <i class="fas fa-angle-down"></i>
+                    </ng-template>
+                  </span>
+                  <div class="child-list" [hidden]="item.isClosed">
+      
+                    <ul class="list-group level-two">
+                      <!-- Child Item -->
+                      <li class="list-group-item level-two" *ngFor="let itemChild of
+                      item.childList">
+                        <!-- Child Checkbox -->
+                        <input type="checkbox" [(ngModel)]="itemChild.isSelected" name="list_name_child"
+                          value="{{itemChild.id}}" (ngModelChange)="childCheck(item,item.childList)" />
+                        {{itemChild.value}}
+                      </li>
+      
+                    </ul>
+      
+                  </div>
+                </li>
+              </ul>
+      
+            </div>
+            <div class="form-group">
+              <input type="submit" class="btnSubmit" value="enter date" />
+            </div>
+        </form>
+        <!-- <div class="col-md-8">
+          {{stringify(data)}}
+        </div> -->
+      </div>
+    </div>
+  </div>

@@ -9,16 +9,18 @@ export class userService {
 Student ={
   email:String,
   password:String,
-  name:String,
+  firstName:String,
+  lastName:String,
   courseProvided:String,
   department:String,
-  days:String
+  days:String,
+  phone:String
 }
 
 getStudent(){
 
-  let s= this.http.get("https://first-flask-server.herokuapp.com/studen");
-   return s;
+  // let s= this.http.get("https://first-flask-server.herokuapp.com/student");
+  //  return s;
 }
  //return this.http.post('https://first-flask-server.herokuapp.com/login',Student);
 }

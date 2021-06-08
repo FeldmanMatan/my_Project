@@ -34,13 +34,16 @@ export class LogInComponent implements OnInit {
 
   loginStudent(event:any){
     const target= event.target;
+    
     this.user.Student.email=target.querySelector('#email').value;
     this.user.Student.password=target.querySelector('#password').value;
-        console.log('email=', this.user.Student.email);
+    console.log('email=', this.user.Student.email);
     console.log('password=', this.user.Student.password);
-
-    this.server.insert(this.user.Student).subscribe(
-      (response)=> console.log(response),
+    var data_for_server = {email:this.user.Student.email, password:this.user.Student.password} 
+    this.server.insert(data_for_server).subscribe(
+      (response)=>{
+         console.log(response)
+        },
       (error)=> console.log(error)
     );
 

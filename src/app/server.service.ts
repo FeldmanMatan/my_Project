@@ -28,24 +28,44 @@ export class ServerService {
     console.log('from server=>   '+a);
      return a;
    }
+    
+   //registration_student
+   registration_student(student:any){
+    let s= this.http.post(this.baseURL+'/add_user_to_db',student); 
+    //let  a= this.http.post('http://first-flask-server.herokuapp.com/login',this.user.Student);
+    console.log('from server=>   '+s);
+     return s;
+   }
+
+   insertData(obj:any){
+    let  a= this.http.post('http://first-flask-server.herokuapp.com/test_data_from_client',obj);
+    console.log('from server=>   '+a);
+     return a;
+   }
 
    getOutStudents(student:any):Observable<any>{
-     let s= this.http.get(this.baseURL+'/get_users_names');
+     let s= this.http.get(this.baseURL+'/get_users_names'); 
      console.log('from server=>   '+s);
      return s;
    }
 
-   OutPutStudentDeatails(student:any){
-    console.log('from server=>   '+student);
-     let a= this.http.post(this.baseURL+'/getuserbyname',this.user.Student.name);
+   OutPutStudentDeatails(name:any){
+   // console.log('from server=>   '+student);
+    var data_to_server = name;
+     let a= this.http.post(this.baseURL+'/getuserbyname',data_to_server);
      console.log('from server=>   '+a);
      return a;
    }
 
-   activate_GA(name:any,course:any){
-    let  a= this.http.post('https://first-flask-server.herokuapp.com/activate_GA',name,course);
+   activate_GA(data:any){
+    // var data_to_server_name=name;
+    // var data_to_server_course=course;
+    // var data_to_server={name ,course};
+    var data_to_database = {'name': "Michael", 'course':"mishdif"}
+   //console.log('from server=>   '+data_to_server.course+ '  '+ data_to_server.name);
+    let  a= this.http.post(this.baseURL+'/activate_GA',data);//{data_to_server_name,data_to_server_course}
     console.log('from server=>   '+a);
-     return a;
+     return a;    //'/activate_GA'
    }
 
   //  logInStudent(student: any):Observable<any>{

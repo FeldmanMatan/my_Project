@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { GeneticAlgorithmComponent } from './genetic-algorithm.component';
+import { GeneticAlgorithemComponent } from './genetic-algorithem.component';
 
-describe('GeneticAlgorithmComponent', () => {
-  let component: GeneticAlgorithmComponent;
-  let fixture: ComponentFixture<GeneticAlgorithmComponent>;
+describe('GeneticAlgorithemComponent', () => {
+  let component: GeneticAlgorithemComponent;
+  let fixture: ComponentFixture<GeneticAlgorithemComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ GeneticAlgorithmComponent ]
+      declarations: [ GeneticAlgorithemComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(GeneticAlgorithmComponent);
+    fixture = TestBed.createComponent(GeneticAlgorithemComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
