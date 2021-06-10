@@ -1,13 +1,9 @@
-
-
-
-
-/////////////////////////////
-import { Component, OnInit,Inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+
+
 import { DataService } from '../data.service';
 import { map } from 'rxjs/operators'
-
 
 
 export interface DialogData {
@@ -17,24 +13,24 @@ export interface DialogData {
 }
 
 @Component({
-  selector: 'app-genetic-algorithem',
-  templateUrl: './genetic-algorithem.component.html',
-  styleUrls: ['./genetic-algorithem.component.css']
+  selector: 'app-const-dialog',
+  templateUrl: './const-dialog.component.html',
+  styleUrls: ['./const-dialog.component.css']
 })
-  export class GeneticAlgorithemComponent implements OnInit {
+export class ConstDialogComponent implements OnInit {
+
   public course_list:any=[];
   public selected_list:any=[];
 
-
-  constructor(
-    public dialogRef: MatDialogRef<GeneticAlgorithemComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData,public dataService: DataService) 
+   constructor(
+    public dialogRef: MatDialogRef<ConstDialogComponent>,
+    @inject(MAT_DIALOG_DATA) public data: DialogData,public dataService: DataService) 
     {let temp:DialogData}
 
-     ngOnInit(): void {
- 
-    }
+  ngOnInit(): void {
+  }
 
+  
   selectedRowIds: Set<number> = new Set<number>();
   
   
@@ -77,4 +73,5 @@ export interface DialogData {
     this.dataService.send_courses_constraits_to_server(this.data.user_id,this.selected_list).subscribe()
     this.dialogRef.close();
   }
+
 }

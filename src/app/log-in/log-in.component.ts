@@ -49,42 +49,7 @@ export class LogInComponent implements OnInit {
 
   
   }
-  // loginUser(event : any){
-
-  //   event.preventDefault();  /**** */
-  //   const target= event.target
-  //   this.student.email=target.querySelector('#email').value;
-  //   this.student.password=target.querySelector('#password').value;
-  //   console.log('email=', this.student.email);
-  //   console.log('password=', this.student.password);
-
-  //  this.server.logInStudent(this.student).subscribe(student=>{
-  //     this.student.email;
-  //    this.student.password;
-   
-
-  //   })
-   // this.student.password=target.querySelector('#password').value;
-
-    
-
-  //   console.log('email=', this.student.email);
-  //   console.log('password=', this.student.password);
-  // }
+ 
   }
-    // const email= target.querySelector('#email').value
-    // const password= target.querySelector('#password').value
-
-    
-
-    // console.log('email=', email);
-    // console.log('password=', password);
-    
-
-      // event.prevetDefult();
-    
-      // const email= target.querySelector('#email').value
-      // const password= target.querySelector('#password').value
-     
-
-
+   
+   

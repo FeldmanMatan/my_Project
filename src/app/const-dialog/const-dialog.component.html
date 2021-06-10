@@ -1,0 +1,47 @@
+
+
+    <!-- <link href="./loginStyle.css" rel="stylesheet" id="login-Style"> --> 
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <!-- <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+
+
+
+    <div class="container login-container">
+        <div class="row">
+            <div class="col-md-6 login-form-1">
+                <h1 mat-dialog-title style="text-align: center;">Changing {{data.name}}'s courses constraints!</h1>
+                <div style="align-self: auto; align-items:center" > 
+                    <button (click)="onLogClick()">Change courses to {{data.name}}</button>
+                 </div>
+            </div>
+            <div class="col-md-6 login-form-2">
+                <div>
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <td class="title-column">Id</td>
+                                <td class="title-column">Course</td>
+                    
+                            </tr>
+                        </thead>
+                        <tr *ngFor="let u of allRows" [class.selectedRow]="rowIsSelected(u.id)" (click)="onRowClick(u.id)" style="cursor: pointer;">
+                            <td class="row-left title">{{u.id}}</td>
+                            <td class="row-mid title">{{u.course}}</td>
+                            <td *ngIf="u.admin==false" class="row-right"></td>
+                        </tr>
+                       </table>
+                    </div>
+            </div>
+        </div>
+    </div>
+    
+
+    
+
+
+
+
+
+
+

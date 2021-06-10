@@ -14,7 +14,10 @@ Student ={
   courseProvided:String,
   department:String,
   days:String,
-  phone:String
+  phone:String,
+  ID:String,
+  type:String
+
 }
 
 getStudent(){

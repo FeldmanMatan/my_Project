@@ -29,7 +29,7 @@ export class RegistrationComponent implements OnInit {
   //   phone:'',
   // }
 
- 
+ type: any;
 /***public Temp: TempServiceService */
   constructor( private server:ServerService, private user:userService) { 
   
@@ -45,7 +45,11 @@ export class RegistrationComponent implements OnInit {
     // event.prevetDefult();
     const target= event.target
     // const email= target.querySelector('#email').value
-    // const password= target.querySelector('#password').value
+   // this.type=  $('input[name=Tutor/Student]:checked', '#Tutor/Student').val()
+   //this.type=target.querySelector('#Tutor/Student').value;
+   var type = $("input[type='radio']:checked").val();
+   console.log('Tutor/Student=   '+ type);
+  
    // this.student.email=target.querySelector('#email').value;
     this.user.Student.password=target.querySelector('#password').value;
     this.user.Student.email=target.querySelector('#email').value;
@@ -53,6 +57,7 @@ export class RegistrationComponent implements OnInit {
     this.user.Student.lastName=target.querySelector('#lastName').value;
     this.user.Student.department=target.querySelector('#department').value;
     this.user.Student.phone=target.querySelector('#phone').value;
+    this.user.Student.ID=target.querySelector('#ID').value;
     //this.Auth.getUserDetails(email, password);
 //firstName,lastName,department,phone
     console.log('email=',  this.user.Student.email);
@@ -61,9 +66,18 @@ export class RegistrationComponent implements OnInit {
     console.log('lastName=', this.user.Student.lastName);
     console.log('department=', this.user.Student.department);
     console.log('phone=', this.user.Student.phone);
+    console.log('ID=', this.user.Student.ID);
 
-    var data_for_server = {email:this.user.Student.email, password:this.user.Student.password, firstName:this.user.Student.firstName,
-                           lastName:this.user.Student.lastName,department:this.user.Student.department,phone:this.user.Student.phone} 
+    var data_for_server = {
+      id:this.user.Student.ID,
+      firstName:this.user.Student.firstName,
+      lastName:this.user.Student.lastName,
+      password:this.user.Student.password,
+      department:this.user.Student.department,
+      email:this.user.Student.email, 
+      phone:this.user.Student.phone,
+      user_type:'type'
+    } 
     this.server.registration_student(data_for_server).subscribe(
       (response)=>{
          console.log(response)

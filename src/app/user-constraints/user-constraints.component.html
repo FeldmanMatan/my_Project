@@ -1,0 +1,98 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="./registratioStyle.css" rel="stylesheet" id="registration-Style"> -->
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Dashboard - Admin</title>
+        <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+    </head> 
+    <!-- <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
+         -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script> -->
+       
+    <div class="container register">
+        <div class="row">
+            <div class="col-md-3 register-left">
+                <!-- <form> -->
+                    <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt=""/>
+                    <!-- <h3>Welcome</h3> -->
+                    <p>Change user's constraints</p>
+                    <form (ngSubmit) = "pass_user_id_to_server($event)"> 
+                        <div> 
+                            <input type="user_id" class="form-control" placeholder="    Student's id" id="user_id" />  
+                        </div>
+                        <div>
+                            <input type="submit" class="btnSubmit" value="Search student" />
+                        </div>
+                    </form>
+
+                    
+         
+            </div>
+            <div class="col-md-9 register-right">
+                
+                <div class="" *ngIf="show_user_flag">
+                    <div class="card ">
+                        <div class="card-body" style="text-align: center;">
+                            <p style="color: blue;"> {{user_data_from_server[0]["name"]}} {{user_data_from_server[0]["last_name"]}} </p>  
+                            <p>{{user_type}}  from {{user_data_from_server[1]["department"]}} faculty</p>
+                            <!-- <p>Type: {{user_type}}</p> -->
+                            <p><button  mat-raised-button (click)="openDialog_change_courses()">Change courses</button></p>
+                            <p><button  mat-raised-button (click)="openDialog_change_days()"> Change    days </button></p>
+                        </div>
+                    </div>
+                    <!--table with info about the user  cpadding-left: 10px;padding-right: 10px;-->
+                    <div>
+                        <table class="table ">
+                            <thead>
+                                <tr>
+                                    <td class="title-column">Day</td>
+                                    <td class="title-column">Hours for that day</td>
+                        
+                                </tr>
+                            </thead>
+                            <tr *ngFor="let i of user_current_days" style="cursor: pointer;">
+                                <td class="row-left title" > {{i["day"]}}</td> 
+                                <td class="row-right title"> {{i["hours"]}}</td>
+                            </tr>
+                           </table>
+                    </div>
+                  
+                    <div>
+                        <table  class="table ">
+                            <thead>
+                                <tr>
+                                    <td class="title-column">Course Name</td>
+                        
+                                </tr>
+                            </thead>
+                            <tr *ngFor="let i of user_current_courses" style="cursor: pointer;">
+                                <td class="row-left title" > {{i}}</td> 
+                            </tr>
+                           </table>
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+<!-- </body> -->
+
+
+
+
+
+

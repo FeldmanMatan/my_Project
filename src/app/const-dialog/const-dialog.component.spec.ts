@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TableTimeComponent } from './table-time.component';
+import { ConstDialogComponent } from './const-dialog.component';
 
-describe('TableTimeComponent', () => {
-  let component: TableTimeComponent;
-  let fixture: ComponentFixture<TableTimeComponent>;
+describe('ConstDialogComponent', () => {
+  let component: ConstDialogComponent;
+  let fixture: ComponentFixture<ConstDialogComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TableTimeComponent ]
+      declarations: [ ConstDialogComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TableTimeComponent);
+    fixture = TestBed.createComponent(ConstDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
