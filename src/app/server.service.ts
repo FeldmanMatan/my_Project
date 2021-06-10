@@ -17,14 +17,14 @@ import { data } from 'jquery';
 })
 export class ServerService {
 
-  baseURL: string = "http://first-flask-server.herokuapp.com";
+  baseURL: string = "https://first-flask-server.herokuapp.com";
 
   constructor(private http: HttpClient, private user: userService) {
 
    }
 
    insert(student:any){
-    let  a= this.http.post('http://first-flask-server.herokuapp.com/login',this.user.Student);
+    let  a= this.http.post('https://first-flask-server.herokuapp.com/login',this.user.Student);
     console.log('from server=>   '+a);
      return a;
    }
@@ -38,7 +38,7 @@ export class ServerService {
    }
 
    insertData(obj:any){
-    let  a= this.http.post('http://first-flask-server.herokuapp.com/test_data_from_client',obj);
+    let  a= this.http.post('https://first-flask-server.herokuapp.com/test_data_from_client',obj);
     console.log('from server=>   '+a);
      return a;
    }
