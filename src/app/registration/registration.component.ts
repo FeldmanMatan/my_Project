@@ -48,7 +48,7 @@ export class RegistrationComponent implements OnInit {
    // this.type=  $('input[name=Tutor/Student]:checked', '#Tutor/Student').val()
    //this.type=target.querySelector('#Tutor/Student').value;
    var type = $("input[type='radio']:checked").val();
-   console.log('Tutor/Student=   '+ type);
+   console.log('Tutor/Student=   '+ this.type);
   
    // this.student.email=target.querySelector('#email').value;
     this.user.Student.password=target.querySelector('#password').value;
@@ -76,7 +76,7 @@ export class RegistrationComponent implements OnInit {
       department:this.user.Student.department,
       email:this.user.Student.email, 
       phone:this.user.Student.phone,
-      user_type:'type'
+      user_type: this.type
     } 
     this.server.registration_student(data_for_server).subscribe(
       (response)=>{
