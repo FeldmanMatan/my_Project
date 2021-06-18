@@ -101,13 +101,19 @@
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css"
-
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
               "node_modules/bootstrap/dist/js/bootstrap.min.js"
-      
             ]
+          }
+        },
+        "deploy": {
+          "builder": "@netlify-builder/deploy:deploy",
+          "options": {
+            "outputPath": "dist/app",
+            "netlifyToken": "wU3gHNGcWc-0tVz--br1dcDscBWeNHzkaCdm_UBTJos",
+            "siteId": "38589e0f-85bb-46f1-b3b4-de317a3416d0"
           }
         }
       }
