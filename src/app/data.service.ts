@@ -3,6 +3,7 @@ import { HttpClient, HttpRequest } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { newArray, stringify } from '@angular/compiler/src/util';
+import { map } from 'rxjs/operators'
 
 
 @Injectable({
@@ -32,25 +33,36 @@ export class DataService {
 
 
 
-
+  //ngrok http 4200 -host-header="localhost:4200" ->for demonstration with ngrok -> must be connected to heroku deployed server
   baseURL:string = "https://first-flask-server.herokuapp.com/"; /// for deploymnet env
   //baseURL:string = "http://127.0.0.1:5000/"; /// for production env
   
   test_data_for_server = {name:"admin", password:"12345"};
   
-  public send_login_to_server():Observable<any>{
-  var temp;
+  public send_login_to_server(name_from_ui:string,pass_from_ui:string):Observable<any>{
+  var data_to_send=  {name:name_from_ui, password:pass_from_ui};
   const headers = { 'content-type': 'application/json'}  
-  const body = JSON.stringify(this.test_data_for_server)
-  return this.http.post(this.baseURL+'admin_login',this.test_data_for_server,{'headers':headers, observe:'response' as 'body'});
+  const body = JSON.stringify(data_to_send)
+  return this.http.post(this.baseURL+'admin_login',body,{'headers':headers, observe:'response' as 'body'});
   ///return this.http.get(this.baseURL+"get_department");
-  
-  }
-  public recive_list_of_tutors_from_server():Observable<any>{
-  return this.http.get(this.baseURL+'get_users_names')
   }
 
-  public send_id_and_course_to_GA(id:any, course:any):Observable<any>{ /****matan */
+  public send_login_to_server_student_tutor(validated_data:any):Observable<any>{
+  return this.http.post(this.baseURL+'login', validated_data)
+  }
+
+  public send_register(register_form:any){
+  return this.http.post(this.baseURL+'register',register_form)
+  }
+
+  public recive_list_of_tutors_from_server():Observable<any>{
+  return this.http.get(this.baseURL+'get_tutors')
+  }
+  public recive_list_of_students_from_server():Observable<any>{
+    return this.http.get(this.baseURL+'get_students')
+    }
+
+  public send_id_and_course_to_GA(id:any, course:any):Observable<any>{
     var body = {'id':id, 'course':course}
     return this.http.post(this.baseURL+'activate_GA',body)
   }
@@ -75,6 +87,30 @@ export class DataService {
     return this.http.put(this.baseURL+'update_user_course_constraits', data_to_send)
   }
 
+
+
+  public send_matched_choice_to_server(student_id:string, tutor_id:string, course:string){
+    var data_to_send = {student_id:student_id,tutor_id:tutor_id,course:course}
+    return this.http.post(this.baseURL+'match_student_tutor',data_to_send)
+  }
+
+  public get_all_matched():Observable<any>{
+    return this.http.get(this.baseURL+'find_all_matches')
+  }
+
+  public send_unmatch(student_id:string,tutor_id:string,course:string){
+    return this.http.post(this.baseURL+'unmatch_student', {student_id:student_id,tutor_id:tutor_id,course:course})
+  }
+  public find_single_student_match_list(student_id:any,user_type:any){
+    var body = {"student_id":student_id,"user_type":user_type}
+    console.log(body)
+    return this.http.post(this.baseURL+'matched_list',body)
+  }
+
+  public first_login_update(id:string){
+    var body = {"id":id}
+    return this.http.post(this.baseURL+'first_login_flag_update',body)
+  }
 
 
 
@@ -175,5 +211,7 @@ export class DataService {
     
     return this.http.put(this.baseURL+"update_user_hours_constraits", data_to_send)
   }
+
+
 }
 

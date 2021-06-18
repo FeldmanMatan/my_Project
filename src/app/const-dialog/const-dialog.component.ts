@@ -1,9 +1,8 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, OnInit,Inject } from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
-
-
 import { DataService } from '../data.service';
 import { map } from 'rxjs/operators'
+import {MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 export interface DialogData {
@@ -22,15 +21,16 @@ export class ConstDialogComponent implements OnInit {
   public course_list:any=[];
   public selected_list:any=[];
 
-   constructor(
+
+  constructor(
     public dialogRef: MatDialogRef<ConstDialogComponent>,
-    @inject(MAT_DIALOG_DATA) public data: DialogData,public dataService: DataService) 
-    {let temp:DialogData}
+    @Inject(MAT_DIALOG_DATA) public data: DialogData,public dataService: DataService,
+    private _snackBar: MatSnackBar) {let temp:DialogData}
 
-  ngOnInit(): void {
-  }
+     ngOnInit(): void {
+ 
+    }
 
-  
   selectedRowIds: Set<number> = new Set<number>();
   
   
@@ -71,7 +71,14 @@ export class ConstDialogComponent implements OnInit {
     this.selected_list = this.getSelectedRows();
     console.log(this.selected_list)
     this.dataService.send_courses_constraits_to_server(this.data.user_id,this.selected_list).subscribe()
+    setTimeout(()=>{this.openSnackBar_ok("Courses changed successfully","Ok")},500)
     this.dialogRef.close();
   }
-
+  openSnackBar_ok(message: string, action: string) {
+    this._snackBar.open(message, action,{
+      duration:3000,
+      panelClass: ['.my-snackbar'],
+      //verticalPosition: 'top',
+    });
+  }
 }

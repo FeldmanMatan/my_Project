@@ -1,9 +1,12 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "cli": {
+    "analytics": "e76eabd6-18b4-400c-ab95-174e3cea05ca"
+  },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "myProject": {
+    "app": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:application": {
@@ -17,7 +20,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/myProject",
+            "outputPath": "dist/app",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -27,10 +30,10 @@
               "src/assets"
             ],
             "styles": [
-              "src/custom-theme.scss",
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.css"
             ],
-            "scripts": [ ]
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -38,7 +41,7 @@
                 {
                   "type": "initial",
                   "maximumWarning": "10mb",
-                  "maximumError": "15mb" 
+                  "maximumError": "15mb"
                 },
                 {
                   "type": "anyComponentStyle",
@@ -69,10 +72,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "myProject:build:production"
+              "browserTarget": "app:build:production"
             },
             "development": {
-              "browserTarget": "myProject:build:development"
+              "browserTarget": "app:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -80,7 +83,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "myProject:build"
+            "browserTarget": "app:build"
           }
         },
         "test": {
@@ -95,24 +98,20 @@
               "src/assets"
             ],
             "styles": [
-              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css", 
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.css",
-              "./node_modules/@circlon/angular-tree-component/css/angular-tree-component.css"
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
 
             ],
-            "scripts": []
-          }
-        },
-        "deploy": {
-          "builder": "@netlify-builder/deploy:deploy",
-          "options": {
-            "outputPath": "dist/myProject",
-            "netlifyToken": "At8uKYAf3pO4JMgvLbB_lNzQs1jCdga101E-FOnBahI",
-            "siteId": "38589e0f-85bb-46f1-b3b4-de317a3416d0"
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js"
+      
+            ]
           }
         }
       }
     }
   },
-  "defaultProject": "myProject"
+  "defaultProject": "app"
 }
